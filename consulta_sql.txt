@@ -1,0 +1,21 @@
+SELECT c.cod_matricula as matricula,
+c.fecha_compra, 
+mc.des_modelo, 
+mc2.des_marca, 
+gc.des_grupo,
+c.color,
+c.km_totales,
+a.des_aseguradora,
+p.cod_poliza,
+r.fecha as fecha_revision,
+r.importe
+
+FROM practica_sql.revisiones r
+
+
+inner join practica_sql.coches c on r.cod_matricula=c.cod_matricula 
+inner join practica_sql.modelos_coches mc on c.cod_modelo =mc.cod_modelo
+inner join practica_sql.marcas_coches mc2 on mc.cod_marca = mc2.cod_marca
+inner join practica_sql.grupos_coches gc on mc2.cod_grupo  = gc.cod_grupo 
+inner join practica_sql.polizas p on c.cod_poliza = p.cod_poliza
+inner join practica_sql.aseguradoras a on p.cod_aseguradora = a.cod_aseguradora;
